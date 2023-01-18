@@ -8,7 +8,6 @@
 //! see spec at https://toml.io/en/
 //!
 
-
 use serde::{Deserialize, Serialize};
 
 /// Assimilate Configuration

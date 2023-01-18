@@ -12,17 +12,21 @@
 
 mod start;
 
-
-use std::clone::Clone;
 use self::start::StartCmd;
 use crate::config::AssimilateConfig;
 use abscissa_core::{config::Override, Command, Configurable, FrameworkError, Runnable};
-use std::path::PathBuf;
-use std::env;
 use once_cell::sync::Lazy;
+use std::path::PathBuf;
 
 /// Application configuration filename
-static CONFIG_FILE: Lazy<PathBuf> = Lazy::new(||{dirs::home_dir().unwrap().join(".config").join("myapp").join("config.toml")});
+/// Generate os agnostic path to config file from home directory
+static CONFIG_FILE: Lazy<PathBuf> = Lazy::new(|| {
+    dirs::home_dir()
+        .unwrap()
+        .join(".config")
+        .join("assimilate")
+        .join("config.toml")
+});
 
 /// Assimilate Subcommands
 /// Subcommands need to be listed in an enum.
@@ -79,10 +83,7 @@ impl Configurable<AssimilateConfig> for EntryPoint {
     ///
     /// This can be safely deleted if you don't want to override config
     /// settings from command-line options.
-    fn process_config(
-        &self,
-        config: AssimilateConfig,
-    ) -> Result<AssimilateConfig, FrameworkError> {
+    fn process_config(&self, config: AssimilateConfig) -> Result<AssimilateConfig, FrameworkError> {
         match &self.cmd {
             AssimilateCmd::Start(cmd) => cmd.override_config(config),
             //

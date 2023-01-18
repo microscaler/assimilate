@@ -23,5 +23,5 @@ version = "0.7.0"
 abscissa_core = { version = "0.7.0", features = ["testing"] }
 once_cell = "1.2"
 
-[workspace]
-abscissa = { path = "workspace/abscissa" }
+#[workspace]
+#abscissa = { path = "workspace/abscissa" }
