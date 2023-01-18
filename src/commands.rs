@@ -14,19 +14,15 @@ mod start;
 
 
 use std::clone::Clone;
-use std::convert::Into;
 use self::start::StartCmd;
 use crate::config::AssimilateConfig;
 use abscissa_core::{config::Override, Command, Configurable, FrameworkError, Runnable};
 use std::path::PathBuf;
+use std::env;
+use once_cell::sync::Lazy;
 
-
-// Assimilate Configuration Filename
-// concatinate path to file under home dir
-
-static CONFIG_FILE: &str = "./.assimilate/config.toml";
-//static  CONFIG_FILE: &str = dirs::home_dir().unwrap().join(".config").join("assimilate").join("config.toml").to_str().unwrap();
-
+/// Application configuration filename
+static CONFIG_FILE: Lazy<PathBuf> = Lazy::new(||{dirs::home_dir().unwrap().join(".config").join("myapp").join("config.toml")});
 
 /// Assimilate Subcommands
 /// Subcommands need to be listed in an enum.
@@ -69,7 +65,7 @@ impl Configurable<AssimilateConfig> for EntryPoint {
             .config
             .as_ref()
             .map(PathBuf::from)
-            .unwrap_or_else(|| CONFIG_FILE.into());
+            .unwrap_or_else(|| CONFIG_FILE.clone());
 
         if filename.exists() {
             Some(filename)
