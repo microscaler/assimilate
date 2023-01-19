@@ -11,8 +11,10 @@
 //! application's configuration file.
 
 mod start;
+mod chart;
 
 use self::start::StartCmd;
+use self::chart::ChartCmd;
 use crate::config::AssimilateConfig;
 use abscissa_core::{config::Override, Command, Configurable, FrameworkError, Runnable};
 use once_cell::sync::Lazy;
@@ -34,6 +36,8 @@ static CONFIG_FILE: Lazy<PathBuf> = Lazy::new(|| {
 pub enum AssimilateCmd {
     /// The `start` subcommand
     Start(StartCmd),
+    /// The `chart` subcommand
+    Chart(ChartCmd),
 }
 
 /// Entry point for the application. It needs to be a struct to allow using subcommands!
@@ -86,6 +90,11 @@ impl Configurable<AssimilateConfig> for EntryPoint {
     fn process_config(&self, config: AssimilateConfig) -> Result<AssimilateConfig, FrameworkError> {
         match &self.cmd {
             AssimilateCmd::Start(cmd) => cmd.override_config(config),
+            //
+            // If you don't need special overrides for some
+            // subcommands, you can just use a catch all
+            // _ => Ok(config),
+            AssimilateCmd::Chart(cmd) => cmd.override_config(config),
             //
             // If you don't need special overrides for some
             // subcommands, you can just use a catch all
