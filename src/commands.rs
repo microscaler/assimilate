@@ -10,11 +10,11 @@
 //! See the `impl Configurable` below for how to specify the path to the
 //! application's configuration file.
 
-mod start;
 mod chart;
+mod start;
 
-use self::start::StartCmd;
 use self::chart::ChartCmd;
+use self::start::StartCmd;
 use crate::config::AssimilateConfig;
 use abscissa_core::{config::Override, Command, Configurable, FrameworkError, Runnable};
 use once_cell::sync::Lazy;

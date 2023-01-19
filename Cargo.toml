@@ -12,6 +12,7 @@ dirs = "4.0.0"
 directories = "4.0.1"
 relative-path = { version = "1.7.3", features = ["serde"] }
 once_cell = "1.2"
+gumdrop = { version = "0.8.1", features = ["default_expr"] }
 
 [dependencies.abscissa_core]
 version = "0.7.0"
