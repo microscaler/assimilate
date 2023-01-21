@@ -24,9 +24,6 @@ use gumdrop::Options;
 ///
 #[derive(clap::Parser, Command, Debug, Options)]
 pub struct ChartCmd {
-    /// To whom are we saying hello?
-    // recipient: Vec<String>,
-
     #[clap(long = "repo", help = "Helm repo http url")]
     pub repo: Option<String>,
 
@@ -63,9 +60,9 @@ pub struct ChartCmd {
     pub name: Option<String>,
 
     #[clap(
-    long = "namespace",
-    required = false,
-    help = "Overide the namespace which is usually set to <chart name>, ."
+        long = "namespace",
+        required = false,
+        help = "Overide the namespace which is usually set to <chart name>, ."
     )]
     pub namespace: Option<String>,
 
@@ -82,8 +79,12 @@ impl Runnable for ChartCmd {
         let _config = APP.config();
         //println!("Hello, {}!", &config.hello.recipient);
         println!(
-            "Args passed: {:?} {:?} {:?} {:?} {:?}",
-            &self.repo, &self.chart, &self.version, &self.component, &self.name
+            "Args passed: repo=={:} chart=={:} version=={:} type=={:} name=={:}",
+            &self.repo.as_deref().unwrap(),
+            &self.chart.as_deref().unwrap(),
+            &self.version.as_deref().unwrap(),
+            &self.component.as_deref().unwrap(),
+            &self.name.as_deref().unwrap()
         );
     }
 }
@@ -97,10 +98,6 @@ impl config::Override<AssimilateConfig> for ChartCmd {
         // mut config: AssimilateConfig,
         config: AssimilateConfig,
     ) -> Result<AssimilateConfig, FrameworkError> {
-        // if !self.recipient.is_empty() {
-        //     config.hello.recipient = self.recipient.join(" ");
-        // }
-
         Ok(config)
     }
 }
