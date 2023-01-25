@@ -4,7 +4,7 @@ title = "Assimilate"
 description = "Assimilate tooling enables organisations to controll their software supply chain and ensure that only trusted software is deployed to their infrastructure."
 
 # The site theme to use.
-theme = "adidoks"
+#theme = "adidoks"
 
 # The default language; used in feeds and search index
 # Note: the search index doesn't support Chinese/Japanese/Korean Languages
@@ -61,7 +61,7 @@ theme_color = "#fff"
 
 # More about site's title
 title_separator = "|"  # set as |, -, _, etc
-title_addition = "Modern Documentation Theme"
+title_addition = "Modern Software Supply Chain"
 
 
 # Set date format in blog publish metadata
