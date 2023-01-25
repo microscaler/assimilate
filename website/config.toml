@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "assimilate.microscaler.io"
+base_url = "/"
 title = "Assimilate"
 description = "Assimilate tooling enables organisations to controll their software supply chain and ensure that only trusted software is deployed to their infrastructure."
 
