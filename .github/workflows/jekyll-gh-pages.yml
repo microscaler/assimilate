@@ -40,8 +40,11 @@ jobs:
           # Provide personal access token
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           website_dir: public
-#      - name: Upload artifact
-#        uses: actions/upload-pages-artifact@v1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          name: public
+          path: website/public
 
 
 
