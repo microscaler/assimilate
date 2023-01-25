@@ -29,3 +29,10 @@ clean: $(CARGO_BINS) ## clean
 .PHONY: build
 build: $(CARGO_BINS) ## build
 	$(CARGO_BINS)/cargo build
+
+.PHONY: serve
+serve: ## serve
+	pushd website
+	zola serve
+	popd
+
