@@ -41,7 +41,7 @@ jobs:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           website_dir: public
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v1
         with:
           name: public
           path: website/public
