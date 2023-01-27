@@ -1,14 +1,12 @@
 # Assimilate
 
-Assimilate is an application.
+Assimilate Tooling  solves the challenge posed in air gapped environements.
 
-## Getting Started
-
-This application is authored using [Abscissa], a Rust application framework.
+The tooling pulls out sub-charts and containers from helm chart and publish into internal "air-gapped" registry
 
 For more information, see:
 
-[Documentation]
+[Microsite Documentation]
 
-[Abscissa]: https://github.com/iqlusioninc/abscissa
-[Documentation]: https://docs.rs/abscissa_core/
+[Microsite Documentation]: https://assimilate.microscaler.io/
+
